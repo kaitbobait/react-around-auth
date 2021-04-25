@@ -224,12 +224,9 @@ function App() {
         <Route path = "/login">
           <Login />
         </Route>
-        <Route path = "/register" onClose={closeAllPopups}>
+        <Route path = "/register" isOpen={isLoginModalOpen} onSubmit={handleLoginModal} onClose={closeAllPopups}>
           <Register />
         </Route>
-        <InfoTooltip isOpen={isLoginModalOpen} onClose={closeAllPopups}>
-
-        </InfoTooltip>
         
       </Switch>
     </CurrentUserContext.Provider>

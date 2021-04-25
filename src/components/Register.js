@@ -15,7 +15,7 @@ class Register extends React.Component {
     this.state = {
       username: '',
       password: '',
-      isModalOpen: false
+      //isModalOpen: false
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,9 +31,12 @@ class Register extends React.Component {
   handleSubmit(evt) {
     // Prevent the browser from navigating to the form address
     evt.preventDefault();
-    this.setState({
-      isModalOpen: true
-    })
+    //this.setState({
+      //isModalOpen: true
+
+   // })
+   this.props.onSubmit();
+   
   }
 
   render(){
@@ -55,7 +58,7 @@ class Register extends React.Component {
               </a>
             </p>
           </form>
-          {<InfoTooltip isOpen={this.state.isModalOpen} isClose={this.props.closeAllPopups}></InfoTooltip>}
+          {<InfoTooltip isOpen={this.props.isOpen} onClose={this.props.onClose}></InfoTooltip>}
           </div>
       </div>
       </>
