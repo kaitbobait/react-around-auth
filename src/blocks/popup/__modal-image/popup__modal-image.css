@@ -1,0 +1,17 @@
+.popup__modal-image {
+  margin: 60px 155px 32px;
+}
+
+.popup__container_modal{
+  padding: 0;
+}
+
+.popup__modal-text{
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  padding: 0;
+  margin: 0 0 60px;
+}
