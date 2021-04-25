@@ -224,7 +224,7 @@ function App() {
         <Route path = "/login">
           <Login />
         </Route>
-        <Route path = "/register">
+        <Route path = "/register" onClose={closeAllPopups}>
           <Register />
         </Route>
         <InfoTooltip isOpen={isLoginModalOpen} onClose={closeAllPopups}>

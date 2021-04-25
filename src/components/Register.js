@@ -55,7 +55,7 @@ class Register extends React.Component {
               </a>
             </p>
           </form>
-          {<InfoTooltip isOpen={this.state.isModalOpen}></InfoTooltip>}
+          {<InfoTooltip isOpen={this.state.isModalOpen} isClose={this.props.closeAllPopups}></InfoTooltip>}
           </div>
       </div>
       </>
