@@ -1,0 +1,47 @@
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 0;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+  max-width: 880px;
+  box-sizing: border-box;
+  background-color: black;
+}
+
+.header__link {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 22px;
+  color: white;
+  margin: 51px 0 46px 0;
+  padding: 0;
+}
+
+.header__link_text{
+  text-decoration: none;
+  color: white;
+}
+
+//TODO add custom cursor
+.header__link_text:hover {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 879px) {
+  .header {
+    padding: 0 40px 0;
+  }
+  
+}
+
+@media only screen and (max-width: 550px) {
+  .header {
+    padding: 0;
+  }
+  
+}
+/*TODO separate the classes into individual CSS documents*/

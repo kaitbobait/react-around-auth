@@ -1,0 +1,29 @@
+
+
+.profile__description {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+  color: white;
+  font-family: 'Inter', sans-serif;
+  padding: 0;
+  margin: 62px 0 0 0;
+  white-space: nowrap;
+  
+}
+
+@media only screen and (max-width: 879px) {
+  .profile__description {
+    margin: 50px 0 0 0;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .profile__description {
+    text-align: center;
+    margin: 26.25px auto 0;
+  }
+}
+
+
+

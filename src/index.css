@@ -1,0 +1,47 @@
+
+@import url('./vendor/normalize.css');
+
+/*fonts*/
+@import url('./vendor/fonts.css');
+
+@import url('./blocks/logo/logo.css');
+@import url('./blocks/page/page.css');
+
+/*header*/
+@import url('./blocks/header/header.css');
+
+/*profile*/
+@import url('./blocks/profile/profile.css');
+
+/*places*/
+@import url('./blocks/places/places.css');
+
+/*footer*/
+@import url('./blocks/footer/footer.css');
+
+/*popup*/
+
+@import url('./blocks/popup/popup.css');
+@import url('./blocks/popup/_open/popup_open.css');
+@import url('./blocks/popup/_open_image/popup_open_image.css');
+
+/*signIn pages*/
+@import url('./blocks/signIn-page/signIn-page.css');
+
+#root {
+  background-color: black;
+}
+
+/* body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+} */

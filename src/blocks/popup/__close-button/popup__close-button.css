@@ -1,0 +1,37 @@
+
+.popup__close-button {
+  position: absolute;
+  bottom: 100%;
+  left: 100%;
+  display: inline-block;
+  outline: none;
+  border: none;
+  height: 40px;
+  width: 40px;
+  background-image: url('../../../images/close-icon.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  transition: .3s;
+}
+
+.popup__close-button:hover {
+  cursor: pointer;
+  opacity: .6;
+}
+
+@media only screen and (max-width: 525px) {
+  .popup__close-button {
+    margin-bottom: 13.62px;
+    left: 90%;
+  }
+}
+
+@media only screen and (max-width: 340px) {
+  .popup__close-button {
+    height: 26px;
+    width: 26px;
+    margin-bottom: 13.62px;
+    left: 90%;
+  }
+}

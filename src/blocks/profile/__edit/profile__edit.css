@@ -1,0 +1,28 @@
+
+.profile__edit {
+  position: relative;
+  height: 24px;
+  width: 24px;
+  padding: 0;
+  margin: 15px 0 0;
+  background-color: transparent;
+  border: 1px solid white;
+  outline: none;
+  background-image: url('../../../images/pencil.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: .2s;
+}
+
+.profile__edit:hover {
+  cursor: pointer;
+  opacity: .6;
+}
+
+@media only screen and (max-width: 550px) {
+  .profile__edit {
+    width: 18px;
+    height: 18px;
+    margin: 4px 0 0 10px;
+  }
+}

@@ -1,0 +1,78 @@
+//TODO separate these into individual CSS files
+.signIn-page {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.signIn-page__container{
+  display: flex;
+  flex-direction: column;
+  width: 358px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.signIn-page__title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 24px;
+  margin: 70px auto 50px;
+}
+
+.signIn-page__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.signIn-page__input {
+  outline: none;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #CCCCCC;
+  margin-bottom: 30px;
+}
+
+.signIn-page__submit{
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 22px;
+  margin-top: calc(216px - 30px);
+  padding: 14px 84px;
+  background: #FFFFFF;
+  border-radius: 2px;
+  outline: none;
+  opacity: 1;
+}
+
+FIXME fix cursor so that image, renders  correct url
+FIXME hover does not seem to work anymore
+.signIn-page__submit:hover {
+  opacity: 85%;
+  cursor: url('../../images/hover__pointer_png.png');
+  cursor: pointer;
+}
+
+::placeholder {
+  color: #E5E5E5;
+  
+}
+
+.signIn-page__link{
+  margin: 15px auto 80px;
+  padding: 0;
+  text-align: center;
+}
+
+.signIn-page__link_text {
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 17px;
+  text-decoration: none;
+}

@@ -1,0 +1,49 @@
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.popup__save-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 21.78px;
+  width: 358px;
+  padding: 13.66px 0 18.49px 0;
+  margin: 18px 0 36.5px 0;
+  border-radius: 2px;
+  outline: none;
+  border: none;
+  transition: .3s;
+}
+
+.popup__save-button:hover {
+  cursor: pointer;
+  background-color: rgba(0,0,0, 0.8);
+  
+}
+
+@media only screen and (max-width: 525px) {
+  .popup__save-button {
+    width: 306px;
+  }
+}
+
+@media only screen and (max-width: 355px) {
+  .popup__save-button {
+    width: 238px;
+    margin: 15px 0 36.5px 0;
+    font-size: 14px;
+    line-height: 16.94px;
+  }
+}

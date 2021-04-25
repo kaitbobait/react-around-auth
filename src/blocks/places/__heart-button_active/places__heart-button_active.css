@@ -1,0 +1,4 @@
+
+.places__heart-button_active {
+  background-image: url(../../../images/heart_liked.jpg);
+}

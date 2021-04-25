@@ -1,0 +1,13 @@
+
+.places__item {
+  position: relative;
+  border-radius: 10px;
+  list-style: none;
+  /* max-width: 282px; */
+  width: 282px;
+  margin: 0 auto;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: white;
+}

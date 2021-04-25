@@ -1,0 +1,14 @@
+
+.places__name {
+  padding: 0;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  line-height: 29.05px;
+  font-weight: 900;
+  font-style: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 25px 200px 31px 21px;
+}

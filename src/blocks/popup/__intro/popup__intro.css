@@ -1,0 +1,18 @@
+
+.popup__intro {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 24px;
+  margin: 0;
+  padding: 34px 0 54px 0;
+  /* line-height: 29.05; */
+}
+
+@media only screen and (max-width: 320px) {
+  .popup__intro {
+    font-size: 18px;
+    line-height: 21.78px;
+    padding: 34px 0 75px 0;
+  }
+}

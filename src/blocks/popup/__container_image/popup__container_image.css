@@ -1,0 +1,29 @@
+
+.popup__container_image {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 5;
+  align-items: center;
+  background-color: transparent;
+  margin: 90px auto;
+  padding: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: none;
+}
+
+.popup_container_image-text{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+@media only screen and (max-width: 320px) {
+  .popup__container_image {
+    margin: 0 40px 0;
+  }
+}
+

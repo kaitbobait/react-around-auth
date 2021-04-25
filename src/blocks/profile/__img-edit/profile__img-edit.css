@@ -1,0 +1,22 @@
+
+.profile__img-edit {
+  background-image: url('../../../images/pencil-avatar.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(0,0,0,0);
+  outline: none;
+  border: none;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: 120px;
+  width: 120px;
+  opacity: 0;
+}
+
+.profile__img-edit:hover {
+  cursor: pointer;
+  opacity: 1;
+  background-color: rgba(0,0,0, .8);
+}
+
