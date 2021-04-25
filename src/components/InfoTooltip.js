@@ -5,12 +5,12 @@ import Success from "../images/success.png";
 
 function InfoTooltip(props) {
   
-  const src = Success;
+  
 
   return(
     <div className={`popup ${props.isOpen ? 'popup_open' : ""}`}>
       <div className="popup__container">
-        <button className="popup__close-button popup__close-button_places" aria-label="Close" type="button" onClick={props.onClose}></button>
+        <button className="popup__close-button" aria-label="Close pop up" type="button" onClick={props.onClose}></button>
         <img src='Success'></img>
         {props.children}
       </div>
