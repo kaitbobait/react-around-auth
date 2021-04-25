@@ -224,8 +224,8 @@ function App() {
         <Route path = "/login">
           <Login />
         </Route>
-        <Route path = "/register" isOpen={isLoginModalOpen} onSubmit={handleLoginModal} onClose={closeAllPopups}>
-          <Register />
+        <Route path = "/register">
+          <Register  isOpen={isLoginModalOpen} onSubmit={handleLoginModal} onClose={closeAllPopups}/>
         </Route>
         
       </Switch>

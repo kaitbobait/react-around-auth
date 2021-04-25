@@ -14,8 +14,7 @@ class Register extends React.Component {
     super(props);
     this.state = {
       username: '',
-      password: '',
-      //isModalOpen: false
+      password: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,10 +30,6 @@ class Register extends React.Component {
   handleSubmit(evt) {
     // Prevent the browser from navigating to the form address
     evt.preventDefault();
-    //this.setState({
-      //isModalOpen: true
-
-   // })
    this.props.onSubmit();
    
   }
