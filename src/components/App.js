@@ -20,6 +20,7 @@ import EditProfilePopup from './EditProfilePopup.js';
 import EditAvatarPopup from './EditAvatarPopup.js';
 import AddPlacePopup from './AddPlacePopup.js';
 import api from '../utils/api.js';
+import auth from '../utils/auth.js';
 
 
 
@@ -175,8 +176,16 @@ function App() {
 
   }
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  function handleLogin() {
+    setIsLoggedIn(true);
+  }
 
+  function checkToken() {
+    if(localStorage.getItem('jwt')) {
+      let jwt = localStorage.getItem('jwt');
 
+    }
+  }
 
 
   return (
@@ -222,7 +231,7 @@ function App() {
           {isLoggedIn ? <Redirect to = "/main" /> : <Redirect to = "/login" />}
         </Route>
         <Route path = "/login">
-          <Login />
+          <Login isOpen={isLoginModalOpen} onSubmit={handleLoginModal} onClose={closeAllPopups} handleLogin={handleLogin}/>
         </Route>
         <Route path = "/register">
           <Register  isOpen={isLoginModalOpen} onSubmit={handleLoginModal} onClose={closeAllPopups}/>

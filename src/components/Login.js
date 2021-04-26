@@ -2,34 +2,58 @@
 //the component for user authorization with the necessary state variables
 
 import React from 'react';
-import {withRouter} from 'react-router-dom';
+import auth from '../utils/auth.js';
+import {useHistory} from 'react-router-dom';
 import Header from './Header.js';
 
-class Login extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      username: '',
-      password: '',
-    }
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+
+ function Login(props) {
+  const [username, setUsername] = React.useState("");
+  const [password, setPassword] = React.useState("");
+
+  const history = useHistory();
+
+  function handleUsernameChange(evt) {
+    setUsername(evt.target.value);
   }
 
-  handleChange(evt) {
-    const {name, value} = evt.target;
-    this.setState({
-      [name]: value
-    });
+  function handlePasswordChange(evt){
+    setPassword(evt.target.value);
   }
 
-  handleSubmit(evt) {
+  const resetForm = () => {
+    setUsername("");
+    setPassword("");
+  }
+
+  function handleSubmit(evt) {
     // Prevent the browser from navigating to the form address
+    
     evt.preventDefault();
+    //changes state of modal to true(open)
+    props.onSubmit();
+    auth.authorize(username, password)
+    .then((data) => {
+      if(data.jwt){
+        // changes loggedIn to true
+        props.handleLogin();
+      }
+    })
+    .then(resetForm)
+    .then(() => history.push('/users/me'))
+    .catch((err) => {
+      console.log(err);
+    })
   }
 
-  render(){
-    return(
+  //checks to see if user already exists with a jwt
+  React.useEffect(() => {
+    if(localStorage.getItem('jwt')){
+      history.push('/login');
+    }
+  }, [])
+
+  return(
       <>
       <Header>
         <a className="header__link_text" href="/register">Sign up</a>
@@ -37,9 +61,9 @@ class Login extends React.Component {
       <div className = "page page__content signIn-page">
         <div className="signIn-page__container">
           <h2 className = "signIn-page__title" style={{"color": "white"}}>Login</h2>
-          <form className="signIn-page__form">
-            <input className ="popup__input signIn-page__input" placeholder="Email" type="text"></input>
-            <input className ="popup__input signIn-page__input" placeholder="Password" type="text"></input>
+          <form className="signIn-page__form" onSubmit={handleSubmit}>
+            <input className ="popup__input signIn-page__input" placeholder="Email" type="text" value={username} onChange={handleUsernameChange}></input>
+            <input className ="popup__input signIn-page__input" placeholder="Password" type="text" value={password} onChange={handlePasswordChange}></input>
             <button className="signIn-page__submit" type="submit">Log in</button>
             <p className="signIn-page__link">
               <a className="signIn-page__link_text" href="/register">
@@ -54,23 +78,9 @@ class Login extends React.Component {
 
     )
   }
-}
 
-/*
- function Login(props) {
-  const [username, setUsername] = React.useState("");
-  const [password, setPassword] = React.useState("");
+export default Login;
 
-  function handleUsernameChange(evt) {
-    setUserName(evt.target.value);
-  }
 
-  function handlePasswordChange(evt){
-    setPassword(evt.target.value);
-  }
- }
-
- */
-
- export default withRouter(Login);
+ //export default withRouter(Login);
  

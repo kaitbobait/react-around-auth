@@ -6,8 +6,9 @@ class AuthApi {
     this._contentType = headers["Content-Type"];
   }
 
+  //doesn't work
   register(username, password){
-    return fetch(`${this._baseUrl}/auth/local/register`, {
+    return fetch(`${this._baseUrl}/register`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -25,7 +26,7 @@ class AuthApi {
   };
 
   authorize(username, password) {
-    return fetch(`${this._baseUrl}/auth/local/`, {
+    return fetch(`${this._baseUrl}/login`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -37,9 +38,33 @@ class AuthApi {
       return res.json();
     })
     .then((data) => {
-      return data;
+      if(data.user){
+        localStorage.setItem('jwt', data.jwt);
+        return data;
+      } else {
+        return
+      }
+      
     })
     .catch((err) => console.log(err))
+  }
+
+  checkToken(token) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': this._contentType,
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({})
+    })
+    .then((res) => {
+      res.json();
+    })
+    .then((data)=> {
+      return data;
+    })
   }
 
 };
