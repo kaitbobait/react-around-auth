@@ -4,7 +4,6 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import Header from './Header.js';
-import PopupWithForm from './PopupWithForm.js';
 
 class Login extends React.Component {
   constructor(props){

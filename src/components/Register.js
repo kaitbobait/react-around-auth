@@ -3,39 +3,55 @@
 
 //the component for user authorization with the necessary state variables
 
-import React from 'react';
-import {withRouter} from 'react-router-dom';
+import React, { useEffect } from 'react';
+import {useHistory} from 'react-router-dom';
 import Header from './Header.js';
 import InfoTooltip from './InfoTooltip.js';
-import PopupWithForm from './PopupWithForm.js';
+import auth from '../utils/auth.js';
 
-class Register extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      username: '',
-      password: ''
-    }
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+ function Register(props) {
+  const [username, setUsername] = React.useState("");
+  const [password, setPassword] = React.useState("");
+
+  const history = useHistory;
+
+  const handleUsernameChange = (evt) => {
+    setUsername(evt.target.value);
   }
 
-  handleChange(evt) {
-    const {name, value} = evt.target;
-    this.setState({
-      [name]: value
-    });
+  const handlePasswordChange =(evt) => {
+    setPassword(evt.target.value);
+    
   }
 
-  handleSubmit(evt) {
-    // Prevent the browser from navigating to the form address
+  const resetForm = () => {
+    setUsername("");
+    setPassword("");
+  }
+
+  const handleSubmit = (evt) => {
+
     evt.preventDefault();
-   this.props.onSubmit();
-   
+    //changes state of modal to true(open)
+    props.onSubmit();
+    auth.register(username, password)
+      .then(resetForm)
+      .then(() => {
+        history.push('/login')
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   }
 
-  render(){
-    return(
+  //checks to see if user already exists with a jwt
+  React.useEffect(() => {
+    if(localStorage.getItem('jwt')){
+      history.push('/login');
+    }
+  }, [])
+
+  return(
       <>
       <Header>
         <a className="header__link_text" href="/login">Sign in</a>
@@ -43,9 +59,9 @@ class Register extends React.Component {
       <div className = "page page__content signIn-page">
         <div className="signIn-page__container">
           <h2 className = "signIn-page__title" style={{"color": "white"}}>Sign up</h2>
-          <form className="signIn-page__form" onSubmit={this.handleSubmit}>
-            <input className ="popup__input signIn-page__input" placeholder="Email" type="text"></input>
-            <input className ="popup__input signIn-page__input" placeholder="Password" type="text"></input>
+          <form className="signIn-page__form" onSubmit={handleSubmit}>
+            <input className ="popup__input signIn-page__input" placeholder="Email" type="text" value={username} onChange={handleUsernameChange}></input>
+            <input className ="popup__input signIn-page__input" placeholder="Password" type="text" value={password} onChange={handlePasswordChange}></input>
             <button className="signIn-page__submit" type="submit">Sign up</button>
             <p className="signIn-page__link">
               <a className="signIn-page__link_text" href="/login">
@@ -53,30 +69,15 @@ class Register extends React.Component {
               </a>
             </p>
           </form>
-          {<InfoTooltip isOpen={this.props.isOpen} onClose={this.props.onClose}></InfoTooltip>}
+          {<InfoTooltip isOpen={props.isOpen} onClose={props.onClose}></InfoTooltip>}
           </div>
       </div>
       </>
 
     )
-  }
-}
 
-/*
- function Login(props) {
-  const [username, setUsername] = React.useState("");
-  const [password, setPassword] = React.useState("");
-
-  function handleUsernameChange(evt) {
-    setUserName(evt.target.value);
-  }
-
-  function handlePasswordChange(evt){
-    setPassword(evt.target.value);
-  }
  }
 
- */
-
- export default withRouter(Register);
+ export default Register;
+ 
  
