@@ -13,8 +13,8 @@ function InfoTooltip(props) {
     <div className={`popup ${props.isOpen ? 'popup_open' : ""}`}>
       <div className="popup__container popup__container_modal">
         <button className="popup__close-button" aria-label="Close pop up" type="button" onClick={props.onClose}></button>
-        <img className="popup__modal-image" src={success}></img>
-        <p className="popup__modal-text">{textSuccess}</p>
+        <img className="popup__modal-image" src={fail}></img>
+        <p className="popup__modal-text">{textFail}</p>
       </div>
     </div>
   )

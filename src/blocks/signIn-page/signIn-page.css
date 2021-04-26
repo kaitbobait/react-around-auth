@@ -76,3 +76,8 @@ FIXME hover does not seem to work anymore
   line-height: 17px;
   text-decoration: none;
 }
+
+.signIn-page__link_text:hover {
+  opacity: 60%;
+  cursor: pointer;
+}

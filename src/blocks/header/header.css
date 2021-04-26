@@ -26,8 +26,9 @@
   color: white;
 }
 
-//TODO add custom cursor
+/* TODO add custom cursor */
 .header__link_text:hover {
+  opacity: 60%;
   cursor: pointer;
 }
 
