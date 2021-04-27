@@ -43,7 +43,7 @@ class AuthApi {
     .then((res) => {
       console.log(res); //undefined
       //console.log(data.user); //undefined
-      if(res.token && !undefined){
+      if(res.token){
         //console.log(localStorage); //jwt undefined
         localStorage.setItem('token', res.token);
         console.log(res);
