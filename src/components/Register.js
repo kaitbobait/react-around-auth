@@ -25,7 +25,7 @@ import auth from '../utils/auth.js';
   }
 
   const resetForm = () => {
-    setUsername("");
+    setEmail("");
     setPassword("");
   }
 
@@ -37,7 +37,7 @@ import auth from '../utils/auth.js';
     auth.register(email, password)
       .then(resetForm)
       .then(() => {
-        history.push('/login')
+        history.push('/users/me')
       })
       .catch((err) => {
         console.log(err);
@@ -45,11 +45,12 @@ import auth from '../utils/auth.js';
   }
 
   //checks to see if user already exists with a jwt
+  //should the dependency be history?
   React.useEffect(() => {
     if(localStorage.getItem('jwt')){
       history.push('/login');
     }
-  }, [])
+  }, [history])
 
   return(
       <>

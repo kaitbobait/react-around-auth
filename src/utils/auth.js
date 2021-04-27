@@ -35,9 +35,13 @@ class AuthApi {
       body: JSON.stringify({ email, password})
     })
     .then((res) => {
+    //   //console.log(res); //unauthorized..no token?
+    //   //console.log(localStorage); // undefined
       return res.json();
     })
     .then((data) => {
+      console.log(data); //undefined
+      //console.log(data.user); //undefined
       if(data.user){
         localStorage.setItem('jwt', data.jwt);
         return data;

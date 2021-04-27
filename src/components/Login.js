@@ -32,8 +32,11 @@ import Header from './Header.js';
     evt.preventDefault();
     //changes state of modal to true(open)
     props.onSubmit();
+    console.log(email); //works
+    console.log(password); //works
     auth.authorize(email, password)
     .then((data) => {
+      //console.log(data);
       if(data.jwt){
         // changes loggedIn to true
         props.handleLogin();

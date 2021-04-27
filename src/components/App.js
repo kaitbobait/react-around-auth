@@ -194,8 +194,8 @@ function App() {
   //       .then((res) => {
   //         console.log(res);
   //           let userData = {
-  //             email: res.email,
-  //             password: res.password
+  //             email: res.data.email,
+  //             password: res.data.password
   //           }
   //           setIsLoggedIn(true);
   //           setUserData(userData);
