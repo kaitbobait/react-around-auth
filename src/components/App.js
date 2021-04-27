@@ -189,7 +189,7 @@ function App() {
     let token = localStorage.getItem('token');
     
       if(token) {
-        console.log(localStorage.getItem('token'));
+        //console.log(localStorage.getItem('token')); undefined
         auth.getContent(token)
         .then((res) => {
           console.log(res);
@@ -197,14 +197,17 @@ function App() {
             //   email: res.data.email,
             //   password: res.data.password
             // }
+            console.log(userData);
             setIsLoggedIn(true);
             setUserData({
-              email: res.email,
-              password: res.password
+              email: res.email
             });
-            history.push('/main');
+            console.log(userData);
+
+            history.push('/main');  
           })
-        
+      } else {
+        console.log('token not found');
       }
   }, [history]);
 
