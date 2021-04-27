@@ -37,13 +37,13 @@ import Header from './Header.js';
     auth.authorize(email, password)
     .then((data) => {
       //console.log(data);
-      if(data.jwt){
+      if(data.token){
         // changes loggedIn to true
         props.handleLogin();
       }
     })
     .then(resetForm)
-    .then(() => history.push('/users/me'))
+    .then(() => history.push('/main'))
     .catch((err) => {
       console.log(err);
     })
@@ -54,7 +54,7 @@ import Header from './Header.js';
     if(localStorage.getItem('jwt')){
       history.push('/login');
     }
-  }, [])
+  }, [history])
 
   return(
       <>

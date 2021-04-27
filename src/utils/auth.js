@@ -19,7 +19,7 @@ class AuthApi {
       return res.json();
     })
     .then((data) => {
-      //localStorage.setItem('jwt', data.jwt);
+      localStorage.setItem('jwt', data.token);
       return data;
     })
     .catch((err) => console.log(err))
@@ -42,8 +42,10 @@ class AuthApi {
     .then((data) => {
       console.log(data); //undefined
       //console.log(data.user); //undefined
-      if(data.user){
-        localStorage.setItem('jwt', data.jwt);
+      if(data){
+        //console.log(localStorage); //jwt undefined
+        localStorage.setItem('jwt', data.token);
+        console.log(localStorage);
         return data;
       } else {
         return
