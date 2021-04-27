@@ -62,7 +62,7 @@ import Header from './Header.js';
   //checks to see if user already exists with a jwt
   React.useEffect(() => {
     if(localStorage.getItem('token')){
-      history.push('/login');
+      history.push('/main');
     }
   }, [history])
 
