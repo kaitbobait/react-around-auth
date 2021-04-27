@@ -27,7 +27,7 @@ class AuthApi {
   };
 
   authorize(email, password) {
-    return fetch(`${this._baseUrl}/login`, {
+    return fetch(`${this._baseUrl}/signin`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
