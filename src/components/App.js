@@ -188,7 +188,7 @@ function App() {
   useEffect(() => {
     let token = localStorage.getItem('token');
     
-      if(token) {
+      if(token && !undefined) {
         //console.log(localStorage.getItem('token')); undefined
         auth.getContent(token)
         .then((res) => {

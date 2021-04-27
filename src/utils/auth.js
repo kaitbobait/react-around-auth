@@ -19,7 +19,8 @@ class AuthApi {
       return res.json();
     })
     .then((data) => {
-      localStorage.setItem('token', data.token);
+       console.log(data);
+      // localStorage.setItem('token', data.token);
       return data;
     })
     .catch((err) => console.log(err))
@@ -42,13 +43,14 @@ class AuthApi {
     .then((res) => {
       console.log(res); //undefined
       //console.log(data.user); //undefined
-      if(res.token){
+      if(res.token && !undefined){
         //console.log(localStorage); //jwt undefined
         localStorage.setItem('token', res.token);
         console.log(res);
         return res;
       } else {
-        return
+        console.log('token is coming up undefined');
+        return;
       }
       
     })
