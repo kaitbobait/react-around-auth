@@ -2,37 +2,37 @@
 class AuthApi {
   constructor({baseUrl, headers}) {
     this._baseUrl = baseUrl;
-    this._authorize = headers.authorization;
     this._contentType = headers["Content-Type"];
   }
 
   //doesn't work
-  register(username, password){
-    return fetch(`${this._baseUrl}/register`, {
+  register(email, password){
+    return fetch(`${this._baseUrl}/signup`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': this._contentType
       },
-      body: JSON.stringify({ username, password})
+      body: JSON.stringify({ email, password})
     })
     .then((res) => {
       return res.json();
     })
-    .then((res) => {
-      return res;
+    .then((data) => {
+      //localStorage.setItem('jwt', data.jwt);
+      return data;
     })
     .catch((err) => console.log(err))
   };
 
-  authorize(username, password) {
+  authorize(email, password) {
     return fetch(`${this._baseUrl}/login`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': this._contentType
       },
-      body: JSON.stringify({ username, password})
+      body: JSON.stringify({ email, password})
     })
     .then((res) => {
       return res.json();
@@ -49,15 +49,14 @@ class AuthApi {
     .catch((err) => console.log(err))
   }
 
-  checkToken(token) {
+  getContent(token) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
         'Content-Type': this._contentType,
         'Authorization': `Bearer ${token}`
-      },
-      body: JSON.stringify({})
+      }
     })
     .then((res) => {
       res.json();
@@ -72,7 +71,6 @@ class AuthApi {
 const auth = new AuthApi({
   baseUrl: "https://register.nomoreparties.co",
   headers: {
-    authorization: "",
     "Content-Type": "application/json"
   }
 });

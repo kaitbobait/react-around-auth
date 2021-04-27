@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch, Redirect, useHistory, withRouter} from 'react-router-dom';
 
 import ProtectedRoute from './ProtectedRoute.js';
@@ -26,6 +26,8 @@ import auth from '../utils/auth.js';
 
 
 function App() {
+
+  const history = useHistory();
 
   // when mounted, userInfo will be updated with value
   const [currentUser, setCurrentUser] = React.useState({});
@@ -180,11 +182,33 @@ function App() {
     setIsLoggedIn(true);
   }
 
-  function checkToken() {
-    if(localStorage.getItem('jwt')) {
-      let jwt = localStorage.getItem('jwt');
+  const [userData, setUserData] = React.useState('');
 
-    }
+  //why use useEffect here?
+  // useEffect(() => {
+  //   let jwt = localStorage.getItem('jwt');
+    
+  //     if(jwt) {
+  //       console.log(localStorage.getItem('jwt'));
+  //       auth.getContent(jwt)
+  //       .then((res) => {
+  //         console.log(res);
+  //           let userData = {
+  //             email: res.email,
+  //             password: res.password
+  //           }
+  //           setIsLoggedIn(true);
+  //           setUserData(userData);
+  //           history.push('/main');
+  //         })
+        
+  //     }
+  // }, [isLoggedIn]);
+
+  function signOut() {
+    localStorage.removeItem('jwt');
+    setIsLoggedIn(false);
+    history.push('/login');
   }
 
 
@@ -233,7 +257,7 @@ function App() {
         <Route path = "/login">
           <Login isOpen={isLoginModalOpen} onSubmit={handleLoginModal} onClose={closeAllPopups} handleLogin={handleLogin}/>
         </Route>
-        <Route path = "/register">
+        <Route path = "/signup">
           <Register  isOpen={isLoginModalOpen} onSubmit={handleLoginModal} onClose={closeAllPopups}/>
         </Route>
         

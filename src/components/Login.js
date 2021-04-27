@@ -8,13 +8,13 @@ import Header from './Header.js';
 
 
  function Login(props) {
-  const [username, setUsername] = React.useState("");
+  const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
   const history = useHistory();
 
-  function handleUsernameChange(evt) {
-    setUsername(evt.target.value);
+  function handleEmailChange(evt) {
+    setEmail(evt.target.value);
   }
 
   function handlePasswordChange(evt){
@@ -22,7 +22,7 @@ import Header from './Header.js';
   }
 
   const resetForm = () => {
-    setUsername("");
+    setEmail("");
     setPassword("");
   }
 
@@ -32,7 +32,7 @@ import Header from './Header.js';
     evt.preventDefault();
     //changes state of modal to true(open)
     props.onSubmit();
-    auth.authorize(username, password)
+    auth.authorize(email, password)
     .then((data) => {
       if(data.jwt){
         // changes loggedIn to true
@@ -56,17 +56,17 @@ import Header from './Header.js';
   return(
       <>
       <Header>
-        <a className="header__link_text" href="/register">Sign up</a>
+        <a className="header__link_text" href="/signup">Sign up</a>
       </Header>
       <div className = "page page__content signIn-page">
         <div className="signIn-page__container">
           <h2 className = "signIn-page__title" style={{"color": "white"}}>Login</h2>
           <form className="signIn-page__form" onSubmit={handleSubmit}>
-            <input className ="popup__input signIn-page__input" placeholder="Email" type="text" value={username} onChange={handleUsernameChange}></input>
+            <input className ="popup__input signIn-page__input" placeholder="Email" type="text" value={email} onChange={handleEmailChange}></input>
             <input className ="popup__input signIn-page__input" placeholder="Password" type="text" value={password} onChange={handlePasswordChange}></input>
             <button className="signIn-page__submit" type="submit">Log in</button>
             <p className="signIn-page__link">
-              <a className="signIn-page__link_text" href="/register">
+              <a className="signIn-page__link_text" href="/signup">
                 Not a member yet? Sign up here!
               </a>
             </p>
