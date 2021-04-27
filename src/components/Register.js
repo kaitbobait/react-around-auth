@@ -47,7 +47,7 @@ import auth from '../utils/auth.js';
   //checks to see if user already exists with a jwt
   //should the dependency be history?
   // React.useEffect(() => {
-  //   if(localStorage.getItem('jwt')){
+  //   if(localStorage.getItem('token')){
   //     history.push('/login');
   //   }
   // }, [history])

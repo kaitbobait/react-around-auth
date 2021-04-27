@@ -10,6 +10,7 @@ import Header from './Header.js';
  function Login(props) {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [message, setMessage] = React.useState("");
 
   const history = useHistory();
 
@@ -24,6 +25,7 @@ import Header from './Header.js';
   const resetForm = () => {
     setEmail("");
     setPassword("");
+    setMessage("");
   }
 
   function handleSubmit(evt) {
@@ -34,9 +36,17 @@ import Header from './Header.js';
     props.onSubmit();
     console.log(email); //works
     console.log(password); //works
+    
+    if(!email || !password){
+      return;
+    }
+
     auth.authorize(email, password)
     .then((data) => {
       //console.log(data);
+      if(!data){
+        throw new Error('user does not exist');
+      }
       if(data.token){
         // changes loggedIn to true
         props.handleLogin();
@@ -51,7 +61,7 @@ import Header from './Header.js';
 
   //checks to see if user already exists with a jwt
   React.useEffect(() => {
-    if(localStorage.getItem('jwt')){
+    if(localStorage.getItem('token')){
       history.push('/login');
     }
   }, [history])

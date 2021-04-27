@@ -182,31 +182,34 @@ function App() {
     setIsLoggedIn(true);
   }
 
-  const [userData, setUserData] = React.useState('');
+  const [userData, setUserData] = React.useState(false);
 
   //why use useEffect here?
-  // useEffect(() => {
-  //   let jwt = localStorage.getItem('jwt');
+  useEffect(() => {
+    let token = localStorage.getItem('token');
     
-  //     if(jwt) {
-  //       console.log(localStorage.getItem('jwt'));
-  //       auth.getContent(jwt)
-  //       .then((res) => {
-  //         console.log(res);
-  //           let userData = {
-  //             email: res.data.email,
-  //             password: res.data.password
-  //           }
-  //           setIsLoggedIn(true);
-  //           setUserData(userData);
-  //           history.push('/main');
-  //         })
+      if(token) {
+        console.log(localStorage.getItem('token'));
+        auth.getContent(token)
+        .then((res) => {
+          console.log(res);
+            // let userData = {
+            //   email: res.data.email,
+            //   password: res.data.password
+            // }
+            setIsLoggedIn(true);
+            setUserData({
+              email: res.email,
+              password: res.password
+            });
+            history.push('/main');
+          })
         
-  //     }
-  // }, [isLoggedIn]);
+      }
+  }, [history]);
 
   function signOut() {
-    localStorage.removeItem('jwt');
+    localStorage.removeItem('token');
     setIsLoggedIn(false);
     history.push('/login');
   }
@@ -215,7 +218,7 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <Switch>
-        <ProtectedRoute path='/main' isLoggedIn={isLoggedIn} component={Main, EditProfilePopup, EditAvatarPopup, ImagePopup, PopupWithForm}>
+        <ProtectedRoute path='/main' isLoggedIn={isLoggedIn} userData={userData} component={Main, EditProfilePopup, EditAvatarPopup, ImagePopup, PopupWithForm}>
         <div className="page">
           <div className="page__content">
             < Header />

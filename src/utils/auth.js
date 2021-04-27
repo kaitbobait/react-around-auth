@@ -19,7 +19,7 @@ class AuthApi {
       return res.json();
     })
     .then((data) => {
-      localStorage.setItem('jwt', data.token);
+      localStorage.setItem('token', data.token);
       return data;
     })
     .catch((err) => console.log(err))
@@ -32,21 +32,21 @@ class AuthApi {
         'Accept': 'application/json',
         'Content-Type': this._contentType
       },
-      body: JSON.stringify({ email, password})
+      body: JSON.stringify({email, password})
     })
     .then((res) => {
     //   //console.log(res); //unauthorized..no token?
     //   //console.log(localStorage); // undefined
       return res.json();
     })
-    .then((data) => {
-      console.log(data); //undefined
+    .then((res) => {
+      console.log(res); //undefined
       //console.log(data.user); //undefined
-      if(data){
+      if(res.token){
         //console.log(localStorage); //jwt undefined
-        localStorage.setItem('jwt', data.token);
-        console.log(localStorage);
-        return data;
+        localStorage.setItem('jwt', res.token);
+        console.log(res);
+        return res;
       } else {
         return
       }
