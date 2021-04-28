@@ -29,6 +29,7 @@ import auth from '../utils/auth.js';
     setPassword("");
   }
 
+  //BUG change both /main to /login and the error goes away.
   const handleSubmit = (evt) => {
 
     evt.preventDefault();
