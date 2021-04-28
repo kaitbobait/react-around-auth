@@ -64,7 +64,7 @@ import Header from './Header.js';
     if(localStorage.getItem('token')){
       history.push('/main');
     }
-  }, [history])
+  }, [props.handleLogin])
 
   return(
       <>

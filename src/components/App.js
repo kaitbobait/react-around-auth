@@ -192,6 +192,12 @@ function App() {
         //console.log(localStorage.getItem('token')); undefined
         auth.getContent(token)
         .then((res) => {
+          setUserData({
+            email: res.email
+          });
+          console.log(userData);
+        })
+        .then((res) => {
           console.log(res);
             // let userData = {
             //   email: res.data.email,
@@ -199,17 +205,14 @@ function App() {
             // }
             console.log(userData);
             setIsLoggedIn(true);
-            setUserData({
-              email: res.email
-            });
-            console.log(userData);
-
-            history.push('/main');  
-          })
+        })
+        .then((res) => {
+          history.push('/main');  
+        })
       } else {
-        console.log('token not found');
+        console.log('token not found - useEffect from App.js error');
       }
-  }, [history]);
+  }, [isLoggedIn]);
 
   function signOut() {
     localStorage.removeItem('token');
