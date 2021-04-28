@@ -226,7 +226,8 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <Switch>
-        <ProtectedRoute path='/main' isLoggedIn={isLoggedIn} userData={userData} component={Main, EditProfilePopup, EditAvatarPopup, ImagePopup, PopupWithForm}>
+        <ProtectedRoute path='/main' isLoggedIn={isLoggedIn} userData={userData} component={Main}>
+        {/* <ProtectedRoute path='/main' isLoggedIn={isLoggedIn} userData={userData} component={Main, EditProfilePopup, EditAvatarPopup, ImagePopup, PopupWithForm}> */}
         <div className="page">
           <div className="page__content">
             < Header />

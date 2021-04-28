@@ -66,7 +66,7 @@ import Header from './Header.js';
   //   }
   // }, [props.isLoggedIn]);
 
-  console.log(props.isLoggedIn); //true
+  //console.log(props.isLoggedIn); //true
 
   return(
       <>
