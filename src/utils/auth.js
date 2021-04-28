@@ -67,11 +67,9 @@ class AuthApi {
       }
     })
     .then((res) => {
-      res.json();
+      return res.json();
     })
-    .then((data)=> {
-      return data;
-    })
+    .then(({data}) => data)
   }
 
 };

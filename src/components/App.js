@@ -182,7 +182,7 @@ function App() {
     setIsLoggedIn(true);
   }
 
-  const [userData, setUserData] = React.useState(false);
+  const [userData, setUserData] = React.useState({});
 
   //why use useEffect here?
   useEffect(() => {
@@ -192,13 +192,16 @@ function App() {
         //console.log(localStorage.getItem('token')); undefined
         auth.getContent(token)
         .then((res) => {
+          //console.log(1);  //works
+          //console.log(res.email); //works
           setUserData({
+            ...userData,
             email: res.email
           });
-          console.log(userData);
+          console.log(setUserData);
         })
         .then((res) => {
-          console.log(res);
+          console.log(res); //returns undefined
             // let userData = {
             //   email: res.data.email,
             //   password: res.data.password
@@ -206,9 +209,9 @@ function App() {
             console.log(userData);
             setIsLoggedIn(true);
         })
-        .then((res) => {
-          history.push('/main');  
-        })
+        // .then((res) => {
+        //   history.push('/main');  
+        // })
       } else {
         console.log('token not found - useEffect from App.js error');
       }
@@ -219,7 +222,6 @@ function App() {
     setIsLoggedIn(false);
     history.push('/login');
   }
-
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -264,7 +266,7 @@ function App() {
           {isLoggedIn ? <Redirect to = "/main" /> : <Redirect to = "/login" />}
         </Route>
         <Route path = "/login">
-          <Login isOpen={isLoginModalOpen} onSubmit={handleLoginModal} onClose={closeAllPopups} handleLogin={handleLogin}/>
+          <Login isOpen={isLoginModalOpen} onSubmit={handleLoginModal} onClose={closeAllPopups} handleLogin={handleLogin} isLoggedIn={isLoggedIn}/>
         </Route>
         <Route path = "/signup">
           <Register  isOpen={isLoginModalOpen} onSubmit={handleLoginModal} onClose={closeAllPopups}/>
