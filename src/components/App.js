@@ -227,6 +227,7 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <Switch>
         <ProtectedRoute path='/main' isLoggedIn={isLoggedIn} userData={userData} component={Main}>
+        </ProtectedRoute>
         {/* <ProtectedRoute path='/main' isLoggedIn={isLoggedIn} userData={userData} component={Main, EditProfilePopup, EditAvatarPopup, ImagePopup, PopupWithForm}> */}
         <div className="page">
           <div className="page__content">
@@ -260,7 +261,6 @@ function App() {
 
           </div>
         </div>
-        </ProtectedRoute>
         
       
         <Route exact path = '/'>
