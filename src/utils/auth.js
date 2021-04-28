@@ -67,6 +67,7 @@ class AuthApi {
       }
     })
     .then((res) => {
+      //FIXME you forgot to return res.json() here
       res.json();
     })
     .then((data)=> {

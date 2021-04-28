@@ -184,6 +184,7 @@ function App() {
 
   const [userData, setUserData] = React.useState(false);
 
+  //REFACTOR you need to put setUserData, history.push,, and setIsLoggedIn in separate .then() statements
   //why use useEffect here?
   useEffect(() => {
     let token = localStorage.getItem('token');
