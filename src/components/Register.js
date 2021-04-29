@@ -24,6 +24,8 @@ import auth from '../utils/auth.js';
     
   }
 
+
+//already have in App.js
   const resetForm = () => {
     setEmail("");
     setPassword("");
@@ -43,14 +45,6 @@ import auth from '../utils/auth.js';
         console.log(err);
       })
   }
-
-  //checks to see if user already exists with a jwt
-  //should the dependency be history?
-  // React.useEffect(() => {
-  //   if(localStorage.getItem('token')){
-  //     history.push('/login');
-  //   }
-  // }, [history])
 
   return(
       <>

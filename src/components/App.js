@@ -231,8 +231,6 @@ function App() {
         .then((res) => {
           history.push('/main');
         })
-    } else {
-      console.log("token not found - useEffect from App.js error");
     }
   }, [isLoggedIn]);
 
@@ -256,7 +254,7 @@ function App() {
     setMessage("");
   };
 
-  function handleSubmit(evt) {
+  function handleLoginSubmit(evt) {
     // Prevent the browser from navigating to the form address
 
     evt.preventDefault();
@@ -286,6 +284,10 @@ function App() {
         console.log(err);
       });
   }
+
+  // Register page
+
+
 
   function logOut() {
     localStorage.removeItem("token");
@@ -326,7 +328,7 @@ function App() {
                 password={password}
                 onPasswordChange={handlePasswordChange}
                 message={message}
-                handleSubmit={handleSubmit}
+                handleSubmit={handleLoginSubmit}
                 onClose={closeAllPopups}
                 isLoggedIn={isLoggedIn}
               />
