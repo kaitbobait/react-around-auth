@@ -64,7 +64,6 @@ import auth from '../utils/auth.js';
               </a>
             </p>
           </form>
-          {<InfoTooltip isOpen={props.isOpen} onClose={props.onClose}></InfoTooltip>}
           </div>
       </div>
       </>

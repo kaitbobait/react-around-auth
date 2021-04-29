@@ -291,7 +291,7 @@ function App() {
     //does not have backend api setup, so anything passes and will result in
     //success modal -- incorrect -- fix when connect backend
     auth.register(email, password)
-    .then(() =>{
+    .then((res) =>{
       handleLoginModal();
       handleSuccess();
     })
@@ -312,6 +312,7 @@ function App() {
     setIsLoggedIn(false);
     history.push("/login");
   }
+
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
