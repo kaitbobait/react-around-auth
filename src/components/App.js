@@ -236,7 +236,7 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <div className="page__content">
-          <Header />
+          {/* <Header isLoggedIn={isLoggedIn} /> */}
           <Switch>
             <ProtectedRoute
               path="/main"
@@ -311,3 +311,27 @@ function App() {
 }
 
 export default App;
+// "PENDING",
+//         WTF,
+//         GOOGLE,
+//         NEED,
+//         SPECS,
+//         FUTURE,
+//         QUESTION,
+//         CREATED,
+//         TEST,
+//         MAKEME,
+//         REFACTOR,
+//         IDEA,
+//         UNPLUGGED,
+//         NOTE,
+//         URGENT,
+//         FIXME,
+//         DEAD,
+//         COMPLETE,
+//         BUG,
+//         DUE,
+//         DONE,
+
+//         "[ ]",
+//         "[x]"

@@ -1,12 +1,12 @@
 import logo from '../images/logo-svg.svg';
 
-//{!props.isLoggedIn && <a className="header__link_text" href="/register">Sign up</a>}
-//TODO change text to Sign in when on register page and link to login
+//MAKEME 
+// connect log out feature to log out function in App.js
+
 function Header(props) {
 
   return(
     <header className="header">
-      {/* <img className="logo" src="<%=require("./images/logo-svg.svg")%>" alt="Around logo"> */}
       <img className="logo" src={logo} alt="Around logo" />
       <p className = "header__link">
         {props.children}

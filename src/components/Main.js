@@ -17,9 +17,7 @@ function Main(props) {
   return (
     <>
     <Header>
-    <Header>
         <a className="header__link_text" href="/login">Log out</a>
-      </Header>
     </Header>
     <main className="main">
       <section className="profile">
