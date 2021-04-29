@@ -6,6 +6,9 @@ import { useHistory, Link } from "react-router-dom";
 import Header from "./Header.js";
 
 function Login(props) {
+
+  //FUTURE delete this extra code --> moved to App.js
+  
   // const [email, setEmail] = React.useState("");
   // const [password, setPassword] = React.useState("");
   // const [message, setMessage] = React.useState("");

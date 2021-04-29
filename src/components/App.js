@@ -190,6 +190,16 @@ function App() {
     setIsLoggedIn(true);
   }
 
+  const [isSuccess, setIsSuccess] = React.useState("");
+  function handleSuccess() {
+    setIsSuccess(true);
+  }
+
+  const [isFail, setIsFail] = React.useState("");
+  function handleFail() {
+    setIsFail(true);
+  }
+
   const [userData, setUserData] = React.useState({});
 
   //why use useEffect here?
@@ -260,11 +270,14 @@ function App() {
       .then((data) => {
         //console.log(data);
         if (!data) {
+          handleLoginModal();
+          handleFail();
           throw new Error("user does not exist");
         }
         if (data.token) {
-          // changes loggedIn to true
+          // changes isLoggedIn to true
           handleLogin();
+          handleSuccess();
         }
       })
       .then(resetForm)
@@ -327,7 +340,7 @@ function App() {
             </Route>
           </Switch>
           <Footer />
-          <InfoTooltip isOpen={isLoginModalOpen} onClose={closeAllPopups}></InfoTooltip>
+          <InfoTooltip isOpen={isLoginModalOpen} onClose={closeAllPopups} isSuccess={isSuccess} isFail={isFail}></InfoTooltip>
           <EditProfilePopup
             isOpen={isEditProfilePopupOpen}
             onClose={closeAllPopups}
