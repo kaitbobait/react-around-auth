@@ -234,8 +234,6 @@ function App() {
     }
   }, [isLoggedIn]);
 
-  //LOGIN PAGE
-
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [message, setMessage] = React.useState("");
@@ -247,6 +245,8 @@ function App() {
   function handlePasswordChange(evt) {
     setPassword(evt.target.value);
   }
+
+  //LOGIN PAGE
 
   const resetForm = () => {
     setEmail("");
@@ -287,6 +287,18 @@ function App() {
 
   // Register page
 
+  const handleRegisterSubmit = (evt) => {
+
+    evt.preventDefault();
+    auth.register(email, password)
+      .then(resetForm)
+      .then(() => {
+        history.push('/login')
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
 
 
   function logOut() {
@@ -336,7 +348,12 @@ function App() {
             <Route path="/signup">
               <Register
                 isOpen={isLoginModalOpen}
-                onSubmit={handleLoginModal}
+                email={email}
+                onEmailChange={handleEmailChange}
+                password={password}
+                onPasswordChange={handlePasswordChange}
+                message={message}
+                handleSubmit={handleRegisterSubmit}
                 onClose={closeAllPopups}
               />
             </Route>
