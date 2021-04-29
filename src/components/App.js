@@ -1,31 +1,31 @@
-import React, { useEffect } from react;
+import React, { useEffect } from "react";
 import {
   Route,
   Switch,
   Redirect,
   useHistory,
   withRouter,
-} from react-router-dom;
+} from "react-router-dom";
 
-import ProtectedRoute from ./ProtectedRoute.js;
-import Login from ./Login.js;
-import Register from ./Register.js;
-import InfoTooltip from ./InfoTooltip.js;
+import ProtectedRoute from "./ProtectedRoute.js";
+import Login from "./Login.js";
+import Register from "./Register.js";
+import InfoTooltip from "./InfoTooltip.js";
 
-import ../index.css;
-import Header from ./Header.js;
-import Main from ./Main.js;
-import Footer from ./Footer.js;
-import PopupWithForm from ./PopupWithForm.js;
-import ImagePopup from ./ImagePopup.js;
-import Card from ./Card.js;
-import { CurrentUserContext } from ../contexts/CurrentUserContext.js;
-import Api from ../utils/api.js;
-import EditProfilePopup from ./EditProfilePopup.js;
-import EditAvatarPopup from ./EditAvatarPopup.js;
-import AddPlacePopup from ./AddPlacePopup.js;
-import api from ../utils/api.js;
-import auth from ../utils/auth.js;
+import "../index.css";
+import Header from "./Header.js";
+import Main from "./Main.js";
+import Footer from "./Footer.js";
+import PopupWithForm from "./PopupWithForm.js";
+import ImagePopup from "./ImagePopup.js";
+import Card from "./Card.js";
+import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
+import Api from "../utils/api.js";
+import EditProfilePopup from "./EditProfilePopup.js";
+import EditAvatarPopup from "./EditAvatarPopup.js";
+import AddPlacePopup from "./AddPlacePopup.js";
+import api from "../utils/api.js";
+import auth from "../utils/auth.js";
 
 function App() {
   const history = useHistory();
@@ -144,14 +144,14 @@ function App() {
   );
 
   function handleEditProfileClick() {
-    // document.querySelector(.popup_type_profile-edit).classList.add(popup_open)
+    // document.querySelector(".popup_type_profile-edit").classList.add("popup_open")
     setisEditProfilePopupOpen(true);
   }
 
   const [isAddPlacePopupOpen, setisisAddPlacePopupOpen] = React.useState(false);
 
   function handleAddPlaceClick() {
-    // document.querySelector(.popup_type_places-edit).classList.add(popup_open);
+    // document.querySelector(".popup_type_places-edit").classList.add("popup_open");
     setisisAddPlacePopupOpen(true);
   }
 
@@ -160,7 +160,7 @@ function App() {
   );
 
   function handleEditAvatarClick() {
-    // document.querySelector(.popup_type_avatar-edit).classList.add(popup_open);
+    // document.querySelector(".popup_type_avatar-edit").classList.add("popup_open");
     setisEditAvatarPopupOpen(true);
   }
 
@@ -194,7 +194,7 @@ function App() {
 
   //why use useEffect here?
   useEffect(() => {
-    let token = localStorage.getItem(token);
+    let token = localStorage.getItem("token");
 
     if (token) {
       //console.log(localStorage.getItem('token')); undefined
@@ -222,24 +222,24 @@ function App() {
           history.push('/main');
         })
     } else {
-      console.log(token not found - useEffect from App.js error);
+      console.log("token not found - useEffect from App.js error");
     }
   }, [isLoggedIn]);
 
   function signOut() {
-    localStorage.removeItem(token);
+    localStorage.removeItem("token");
     setIsLoggedIn(false);
-    history.push(/login);
+    history.push("/login");
   }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <div className=page>
-        <div className=page__content>
+      <div className="page">
+        <div className="page__content">
           <Header />
           <Switch>
             <ProtectedRoute
-              path=/main
+              path="/main"
               isLoggedIn={isLoggedIn}
               userData={userData}
               component={Main}
@@ -253,10 +253,10 @@ function App() {
             ></ProtectedRoute>
             {/* <ProtectedRoute path='/main' isLoggedIn={isLoggedIn} userData={userData} component={Main, EditProfilePopup, EditAvatarPopup, ImagePopup, PopupWithForm}> */}
 
-            <Route exact path=/>
-              {isLoggedIn ? <Redirect to=/main /> : <Redirect to=/login />}
+            <Route exact path="/">
+              {isLoggedIn ? <Redirect to="/main" /> : <Redirect to="/login" />}
             </Route>
-            <Route path=/login>
+            <Route path="/login">
               <Login
                 isOpen={isLoginModalOpen}
                 onSubmit={handleLoginModal}
@@ -265,7 +265,7 @@ function App() {
                 isLoggedIn={isLoggedIn}
               />
             </Route>
-            <Route path=/signup>
+            <Route path="/signup">
               <Register
                 isOpen={isLoginModalOpen}
                 onSubmit={handleLoginModal}
@@ -293,8 +293,8 @@ function App() {
 
           {/* Delete Popup  - doesn't work yet - need cards*/}
           <PopupWithForm
-            name=delete-places
-            title=Are you sure?
+            name="delete-places"
+            title="Are you sure?"
             onClose={closeAllPopups}
           ></PopupWithForm>
 
