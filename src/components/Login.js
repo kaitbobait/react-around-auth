@@ -6,57 +6,57 @@ import { useHistory, Link } from "react-router-dom";
 import Header from "./Header.js";
 
 function Login(props) {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [message, setMessage] = React.useState("");
+  // const [email, setEmail] = React.useState("");
+  // const [password, setPassword] = React.useState("");
+  // const [message, setMessage] = React.useState("");
 
-  const history = useHistory();
+  // const history = useHistory();
 
-  function handleEmailChange(evt) {
-    setEmail(evt.target.value);
-  }
+  // function handleEmailChange(evt) {
+  //   setEmail(evt.target.value);
+  // }
 
-  function handlePasswordChange(evt) {
-    setPassword(evt.target.value);
-  }
+  // function handlePasswordChange(evt) {
+  //   setPassword(evt.target.value);
+  // }
 
-  const resetForm = () => {
-    setEmail("");
-    setPassword("");
-    setMessage("");
-  };
+  // const resetForm = () => {
+  //   setEmail("");
+  //   setPassword("");
+  //   setMessage("");
+  // };
 
-  function handleSubmit(evt) {
-    // Prevent the browser from navigating to the form address
+  // function handleSubmit(evt) {
+  //   // Prevent the browser from navigating to the form address
 
-    evt.preventDefault();
-    //changes state of modal to true(open)
-    props.onSubmit();
-    console.log(email); //works
-    console.log(password); //works
+  //   evt.preventDefault();
+  //   //changes state of modal to true(open)
+  //   props.onSubmit();
+  //   console.log(email); //works
+  //   console.log(password); //works
 
-    if (!email || !password) {
-      return;
-    }
+  //   if (!email || !password) {
+  //     return;
+  //   }
 
-    auth
-      .authorize(email, password)
-      .then((data) => {
-        //console.log(data);
-        if (!data) {
-          throw new Error("user does not exist");
-        }
-        if (data.token) {
-          // changes loggedIn to true
-          props.handleLogin();
-        }
-      })
-      .then(resetForm)
-      .then(() => history.push("/main"))
-      .catch((err) => {
-        console.log(err);
-      });
-  }
+  //   auth
+  //     .authorize(email, password)
+  //     .then((data) => {
+  //       //console.log(data);
+  //       if (!data) {
+  //         throw new Error("user does not exist");
+  //       }
+  //       if (data.token) {
+  //         // changes loggedIn to true
+  //         props.handleLogin();
+  //       }
+  //     })
+  //     .then(resetForm)
+  //     .then(() => history.push("/main"))
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }
 
 
   return (
@@ -71,20 +71,20 @@ function Login(props) {
           <h2 className="signIn-page__title" style={{ color: "white" }}>
             Login
           </h2>
-          <form className="signIn-page__form" onSubmit={handleSubmit}>
+          <form className="signIn-page__form" onSubmit={props.handleSubmit}>
             <input
               className="popup__input signIn-page__input"
               placeholder="Email"
               type="text"
-              value={email}
-              onChange={handleEmailChange}
+              value={props.email}
+              onChange={props.onEmailChange}
             ></input>
             <input
               className="popup__input signIn-page__input"
               placeholder="Password"
               type="text"
-              value={password}
-              onChange={handlePasswordChange}
+              value={props.password}
+              onChange={props.onPasswordChange}
             ></input>
             <button className="signIn-page__submit" type="submit">
               Log in
