@@ -164,11 +164,6 @@ function App() {
     setisEditAvatarPopupOpen(true);
   }
 
-  const [isLoginModalOpen, setIsLoginModalOpen] = React.useState(false);
-  function handleLoginModal() {
-    setIsLoginModalOpen(true);
-  }
-
   const [selectedCard, setSelectedCard] = React.useState(false);
 
   function handleCardClick(cardInfo) {
@@ -190,6 +185,11 @@ function App() {
     setIsLoggedIn(true);
   }
 
+  const [isLoginModalOpen, setIsLoginModalOpen] = React.useState(false);
+  function handleLoginModal() {
+    setIsLoginModalOpen(true);
+  }
+
   const [isSuccess, setIsSuccess] = React.useState("");
   function handleSuccess() {
     setIsSuccess(true);
@@ -200,6 +200,9 @@ function App() {
     setIsFail(true);
   }
 
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [message, setMessage] = React.useState("");
   const [userData, setUserData] = React.useState({});
 
   //why use useEffect here?
@@ -217,15 +220,11 @@ function App() {
             ...userData,
             email: res.email,
           });
-          console.log(setUserData);
+          
         })
         .then((res) => {
           console.log(res); //returns undefined
-          // let userData = {
-          //   email: res.data.email,
-          //   password: res.data.password
-          // }
-          console.log(userData);
+         console.log(userData);
           setIsLoggedIn(true);
         })
         .then((res) => {
@@ -234,9 +233,6 @@ function App() {
     }
   }, [isLoggedIn]);
 
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [message, setMessage] = React.useState("");
 
   function handleEmailChange(evt) {
     setEmail(evt.target.value);
@@ -268,19 +264,21 @@ function App() {
       .then((data) => {
         //console.log(data);
         if (!data) {
-          handleLoginModal();
           handleFail();
+          handleLoginModal();
+          console.log(isFail);
           throw new Error("user does not exist");
         }
         if (data.token) {
           // changes isLoggedIn to true
           handleLogin();
-          handleSuccess();
         }
       })
       .then(resetForm)
       .then(() => history.push("/main"))
       .catch((err) => {
+        handleFail();
+        handleLoginModal();
         console.log(err);
       });
   }
@@ -290,16 +288,24 @@ function App() {
   const handleRegisterSubmit = (evt) => {
 
     evt.preventDefault();
+    //does not have backend api setup, so anything passes and will result in
+    //success modal -- incorrect -- fix when connect backend
     auth.register(email, password)
-      .then(resetForm)
-      .then(() => {
-        history.push('/login')
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+    .then(() =>{
+      handleLoginModal();
+      handleSuccess();
+    })
+    .then(resetForm)
+      // .then(() => {
+      //   history.push('/login')
+      // })
+    .catch((err) => {
+      console.log(err);
+      handleFail();
+      handleLoginModal();
+      
+    })
   }
-
 
   function logOut() {
     localStorage.removeItem("token");
@@ -315,9 +321,10 @@ function App() {
           <Switch>
             <ProtectedRoute
               path="/main"
-              isLoggedIn={isLoggedIn}
-              userData={userData}
               component={Main}
+              isLoggedIn={isLoggedIn}
+              email={email}
+              userData={userData}
               onLogOut={logOut}
               onEditProfile={handleEditProfileClick}
               onAddPlace={handleAddPlaceClick}
@@ -336,6 +343,7 @@ function App() {
               <Login
                 isOpen={isLoginModalOpen}
                 email={email}
+                userData={userData}
                 onEmailChange={handleEmailChange}
                 password={password}
                 onPasswordChange={handlePasswordChange}

@@ -14,11 +14,13 @@ function Main(props) {
 
   const currentUser = React.useContext(CurrentUserContext);
 
-
   return (
     <>
     <Header>
+      <nav className="header__nav"> 
         <Link className="header__link_text" onClick={props.onLogOut}>Log out</Link>
+        <p className="header__email">{props.userData.email}</p>
+      </nav>
     </Header>
     <main className="main">
       <section className="profile">

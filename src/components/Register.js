@@ -49,12 +49,12 @@ import auth from '../utils/auth.js';
   return(
       <>
       <Header>
-        <Link className="header__link_text" to="/login">Sign in</Link>
+        <Link className="header__link_text" to="/login">Log in</Link>
       </Header>
       <div className = "page page__content signIn-page">
         <div className="signIn-page__container">
           <h2 className = "signIn-page__title" style={{"color": "white"}}>Sign up</h2>
-          <form className="signIn-page__form" onSubmit={props.handleRegisterSubmit}>
+          <form className="signIn-page__form" onSubmit={props.handleSubmit}>
             <input className ="popup__input signIn-page__input" placeholder="Email" type="text" value={props.email} onChange={props.onEmailChange}></input>
             <input className ="popup__input signIn-page__input" placeholder="Password" type="text" value={props.password} onChange={props.onPasswordChange}></input>
             <button className="signIn-page__submit" type="submit">Sign up</button>

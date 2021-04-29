@@ -10,6 +10,11 @@
   background-color: black;
 }
 
+.header__nav{
+  display: flex;
+  flex-direction: row-reverse;
+}
+
 .header__link {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
@@ -30,6 +35,11 @@
 .header__link_text:hover {
   opacity: 60%;
   cursor: pointer;
+}
+
+.header__email{
+  margin: 0 24px 0;
+  padding: 0;
 }
 
 @media only screen and (max-width: 879px) {
