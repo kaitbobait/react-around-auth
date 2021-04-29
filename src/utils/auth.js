@@ -46,7 +46,8 @@ class AuthApi {
       if(res.token){
         //console.log(localStorage); //jwt undefined
         localStorage.setItem('token', res.token);
-        console.log(res);
+        
+        
         return res;
       } else {
         console.log('token is coming up undefined');

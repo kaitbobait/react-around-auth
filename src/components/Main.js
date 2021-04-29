@@ -1,5 +1,6 @@
 
 import React from 'react';
+import {Link} from 'react-router-dom'
 import api from '../utils/api.js';
 import Card from './Card.js';
 import Header from './Header.js';
@@ -17,7 +18,7 @@ function Main(props) {
   return (
     <>
     <Header>
-        <a className="header__link_text" href="/login">Log out</a>
+        <Link className="header__link_text" onClick={props.onLogOut}>Log out</Link>
     </Header>
     <main className="main">
       <section className="profile">

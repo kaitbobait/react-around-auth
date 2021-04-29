@@ -4,7 +4,7 @@
 //the component for user authorization with the necessary state variables
 
 import React, { useEffect } from 'react';
-import {useHistory} from 'react-router-dom';
+import {useHistory, Link} from 'react-router-dom';
 import Header from './Header.js';
 import InfoTooltip from './InfoTooltip.js';
 import auth from '../utils/auth.js';
@@ -55,7 +55,7 @@ import auth from '../utils/auth.js';
   return(
       <>
       <Header>
-        <a className="header__link_text" href="/login">Sign in</a>
+        <Link className="header__link_text" to="/login">Sign in</Link>
       </Header>
       <div className = "page page__content signIn-page">
         <div className="signIn-page__container">

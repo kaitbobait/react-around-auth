@@ -2,7 +2,7 @@
 
 import React from "react";
 import auth from "../utils/auth.js";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import Header from "./Header.js";
 
 function Login(props) {
@@ -62,9 +62,9 @@ function Login(props) {
   return (
     <>
       <Header>
-        <a className="header__link_text" href="/signup">
+        <Link className="header__link_text" to="/signup">
           Sign up
-        </a>
+        </Link>
       </Header>
       <div className="page page__content signIn-page">
         <div className="signIn-page__container">

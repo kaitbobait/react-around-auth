@@ -226,7 +226,7 @@ function App() {
     }
   }, [isLoggedIn]);
 
-  function signOut() {
+  function logOut() {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
     history.push("/login");
@@ -243,6 +243,7 @@ function App() {
               isLoggedIn={isLoggedIn}
               userData={userData}
               component={Main}
+              onLogOut={logOut}
               onEditProfile={handleEditProfileClick}
               onAddPlace={handleAddPlaceClick}
               onEditAvatar={handleEditAvatarClick}
@@ -274,6 +275,7 @@ function App() {
             </Route>
           </Switch>
           <Footer />
+          <InfoTooltip isOpen={isLoginModalOpen} onClose={closeAllPopups}></InfoTooltip>
           <EditProfilePopup
             isOpen={isEditProfilePopupOpen}
             onClose={closeAllPopups}
@@ -304,6 +306,7 @@ function App() {
             isOpen={selectedCard}
             onClose={closeAllPopups}
           />
+
         </div>
       </div>
     </CurrentUserContext.Provider>
