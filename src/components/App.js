@@ -189,12 +189,12 @@ function App() {
     setIsLoginModalOpen(true);
   }
 
-  const [isSuccess, setIsSuccess] = React.useState("");
+  const [isSuccess, setIsSuccess] = React.useState(false);
   function handleSuccess() {
     setIsSuccess(true);
   }
 
-  const [isFail, setIsFail] = React.useState("");
+  const [isFail, setIsFail] = React.useState(false);
   function handleFail() {
     setIsFail(true);
   }
@@ -206,12 +206,12 @@ function App() {
 
   //why use useEffect here?
   useEffect(() => {
-    let token = localStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
     if (token) {
       //console.log(localStorage.getItem('token')); undefined
       auth
-        .getContent(token)
+        .checkToken(token)
         .then((res) => {
           //console.log(1);  //works
           //console.log(res.email); //works
