@@ -20,7 +20,6 @@ import PopupWithForm from "./PopupWithForm.js";
 import ImagePopup from "./ImagePopup.js";
 import Card from "./Card.js";
 import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
-import Api from "../utils/api.js";
 import EditProfilePopup from "./EditProfilePopup.js";
 import EditAvatarPopup from "./EditAvatarPopup.js";
 import AddPlacePopup from "./AddPlacePopup.js";
@@ -34,7 +33,7 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({});
 
   React.useEffect(() => {
-    Api.getUserInfo()
+    api.getUserInfo()
       .then((data) => {
         setCurrentUser(data);
       })
