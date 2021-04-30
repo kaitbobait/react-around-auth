@@ -13,9 +13,10 @@ class Api {
   _checkResponse(res) {
     if (res.ok) {
       return res.json();
-    }
+    } else{
     // if server returns an error, reject the promise
-    return Promise.reject(`Error: ${res.status}`);
+      return Promise.reject(`Error: ${res.status}`);
+    }
   }
 
   getInitialCards() {
@@ -27,7 +28,7 @@ class Api {
       }
     })
       .then((res) => {
-        this._checkResponse(res);
+        return this._checkResponse(res);
       })
   }
 
@@ -40,7 +41,7 @@ class Api {
       }
     })
       .then((res) => {
-        this._checkResponse(res);
+        return this._checkResponse(res);
       })
   }
 
@@ -58,7 +59,7 @@ class Api {
       })
     })
     .then((res) => {
-      this._checkResponse(res);
+      return this._checkResponse(res);
     })
   }
 
@@ -74,7 +75,7 @@ class Api {
       })
     })
     .then((res) => {
-      this._checkResponse(res);
+      return this._checkResponse(res);
     })
   }
 
@@ -92,7 +93,7 @@ class Api {
       })
     })
     .then((res) => {
-      this._checkResponse(res);
+      return this._checkResponse(res);
     })
   }
 
@@ -113,7 +114,7 @@ class Api {
       }
     })
       .then(res => {
-        this._checkResponse(res);
+        return this._checkResponse(res);
       })
   }
 
@@ -128,7 +129,7 @@ class Api {
       }
     })
     .then(res => {
-      this._checkResponse(res);
+      return this._checkResponse(res);
     })
   }
   

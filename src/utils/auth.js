@@ -23,7 +23,7 @@ class AuthApi {
       body: JSON.stringify({ email, password }),
     })
       .then((res) => {
-        this._checkResponse(res);
+        return this._checkResponse(res);
       })
       .then((res) => {
         return res;
@@ -40,7 +40,7 @@ class AuthApi {
       body: JSON.stringify({ email, password }),
     })
       .then((res) => {
-        this._checkResponse(res);
+        return this._checkResponse(res);
       })
       .then((res) => {
         if (res.token) {
@@ -63,7 +63,7 @@ class AuthApi {
       },
     })
       .then((res) => {
-        this._checkResponse(res);
+        return this._checkResponse(res);
       })
       .then(({ data }) => data);
   }
