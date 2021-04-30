@@ -19,6 +19,7 @@ function InfoTooltip(props) {
         <img 
         className="popup__modal-image" 
         src={!props.isSuccess ? fail : success}
+        alt={!props.isSuccess ? "failed submission" : "successful submission"}
         >
         </img>
         <p className="popup__modal-text">{!props.isSuccess ? textFail : textSuccess}</p>
