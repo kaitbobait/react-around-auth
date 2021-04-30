@@ -7,61 +7,6 @@ import Header from "./Header.js";
 
 function Login(props) {
 
-  //FUTURE delete this extra code --> moved to App.js
-  
-  // const [email, setEmail] = React.useState("");
-  // const [password, setPassword] = React.useState("");
-  // const [message, setMessage] = React.useState("");
-
-  // const history = useHistory();
-
-  // function handleEmailChange(evt) {
-  //   setEmail(evt.target.value);
-  // }
-
-  // function handlePasswordChange(evt) {
-  //   setPassword(evt.target.value);
-  // }
-
-  // const resetForm = () => {
-  //   setEmail("");
-  //   setPassword("");
-  //   setMessage("");
-  // };
-
-  // function handleSubmit(evt) {
-  //   // Prevent the browser from navigating to the form address
-
-  //   evt.preventDefault();
-  //   //changes state of modal to true(open)
-  //   props.onSubmit();
-  //   console.log(email); //works
-  //   console.log(password); //works
-
-  //   if (!email || !password) {
-  //     return;
-  //   }
-
-  //   auth
-  //     .authorize(email, password)
-  //     .then((data) => {
-  //       //console.log(data);
-  //       if (!data) {
-  //         throw new Error("user does not exist");
-  //       }
-  //       if (data.token) {
-  //         // changes loggedIn to true
-  //         props.handleLogin();
-  //       }
-  //     })
-  //     .then(resetForm)
-  //     .then(() => history.push("/main"))
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }
-
-
   return (
     <>
       <Header>

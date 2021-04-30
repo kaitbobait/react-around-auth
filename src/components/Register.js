@@ -6,45 +6,8 @@
 import React, { useEffect } from 'react';
 import {useHistory, Link} from 'react-router-dom';
 import Header from './Header.js';
-import InfoTooltip from './InfoTooltip.js';
-import auth from '../utils/auth.js';
 
  function Register(props) {
-  // const [email, setEmail] = React.useState("");
-  // const [password, setPassword] = React.useState("");
-
-  // const history = useHistory();
-
-  // const handleEmailChange = (evt) => {
-  //   setEmail(evt.target.value);
-  // }
-
-  // const handlePasswordChange =(evt) => {
-  //   setPassword(evt.target.value);
-    
-  // }
-
-
-//already have in App.js
-  // const resetForm = () => {
-  //   setEmail("");
-  //   setPassword("");
-  // }
-
-  // const handleSubmit = (evt) => {
-
-  //   evt.preventDefault();
-  //   //changes state of modal to true(open)
-  //   props.onSubmit();
-  //   auth.register(email, password)
-  //     .then(resetForm)
-  //     .then(() => {
-  //       history.push('/login')
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     })
-  // }
 
   return(
       <>
