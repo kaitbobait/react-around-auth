@@ -229,6 +229,7 @@ function App() {
         .then((res) => {
           history.push('/main');
         })
+        .catch((err => console.log(err))
     }
   }, [isLoggedIn]);
 
