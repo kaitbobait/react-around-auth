@@ -4,6 +4,14 @@ class AuthApi {
     this._contentType = headers["Content-Type"];
   }
 
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    // if server returns an error, reject the promise
+    return Promise.reject(`Error: ${res.status}`);
+  }
+
   //doesn't work
   register(email, password) {
     return fetch(`${this._baseUrl}/signup`, {
@@ -15,20 +23,11 @@ class AuthApi {
       body: JSON.stringify({ email, password }),
     })
       .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Error: ${res.status}`);
+        this._checkResponse(res);
       })
       .then((res) => {
-        console.log(res);
-        // localStorage.setItem('token', data.token);
         return res;
       })
-      .catch((err) => {
-        console.log(err);
-        //return res.status(400).send({error: 'one of the fields was filled in incorrectly '})
-      });
   }
 
   authorize(email, password) {
@@ -41,10 +40,7 @@ class AuthApi {
       body: JSON.stringify({ email, password }),
     })
       .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Error: ${res.status}`);
+        this._checkResponse(res);
       })
       .then((res) => {
         if (res.token) {
@@ -55,11 +51,6 @@ class AuthApi {
           return;
         }
       })
-      .catch((err) => {
-        console.log(err);
-        //need 400? How to check?
-        //return res.status(401).send({error: 'the user with the specified email not found d'})
-      });
   }
 
   getContent(token) {
@@ -72,7 +63,7 @@ class AuthApi {
       },
     })
       .then((res) => {
-        return res.json();
+        this._checkResponse(res);
       })
       .then(({ data }) => data);
   }
@@ -86,3 +77,4 @@ const auth = new AuthApi({
 });
 
 export default auth;
+

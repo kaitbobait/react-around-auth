@@ -1,5 +1,4 @@
 
-
 /**
  * works with the API
  * All requests are methods of this Class
@@ -11,6 +10,14 @@ class Api {
     this._contentType = headers["Content-Type"];
   }
 
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    // if server returns an error, reject the promise
+    return Promise.reject(`Error: ${res.status}`);
+  }
+
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       method: "GET",
@@ -19,17 +26,9 @@ class Api {
         
       }
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        // if server returns an error, reject the promise
-        return Promise.reject(`Error: ${res.status}`);
+      .then((res) => {
+        this._checkResponse(res);
       })
-      // if there is an error, log it
-      .catch(err => {
-        console.log(err);
-      });
   }
 
   // GETs information for the user profile
@@ -41,14 +40,8 @@ class Api {
       }
     })
       .then((res) => {
-        if(res.ok){
-          return res.json();
-        }
-        return Promise.reject(`Error: ${res.status}`);
+        this._checkResponse(res);
       })
-      .catch((err) => {
-        console.log(err);
-      });
   }
 
   // modified the profile text content
@@ -65,14 +58,8 @@ class Api {
       })
     })
     .then((res) => {
-      if(res.ok){
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
+      this._checkResponse(res);
     })
-    .catch((err) => {
-      console.log(err);
-    });  
   }
 
   editAvatar(link) {
@@ -87,14 +74,8 @@ class Api {
       })
     })
     .then((res) => {
-      if(res.ok){
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
+      this._checkResponse(res);
     })
-    .catch((err) => {
-      console.log(err);
-    });  
   }
 
 
@@ -111,14 +92,8 @@ class Api {
       })
     })
     .then((res) => {
-      if(res.ok){
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
+      this._checkResponse(res);
     })
-    .catch((err) => {
-      console.log(err);
-    });
   }
 
   changeLikeCardStatus(cardId, isLiked) {
@@ -138,16 +113,8 @@ class Api {
       }
     })
       .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        // if server returns an error, reject the promise
-        return Promise.reject(`Error: ${res.status}`);
+        this._checkResponse(res);
       })
-      // if there is an error, log it
-      .catch(err => {
-        console.log(err);
-      });
   }
 
 
@@ -161,17 +128,8 @@ class Api {
       }
     })
     .then(res => {
-      if (res.ok) {
-        // return res.json();
-        return res;
-      }
-      // if server returns an error, reject the promise
-      return Promise.reject(`Error: ${res.status}`);
+      this._checkResponse(res);
     })
-    // if there is an error, log it
-    .catch(err => {
-      console.log(err);
-    });
   }
   
 }

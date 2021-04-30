@@ -10,7 +10,7 @@ function InfoTooltip(props) {
   
   const textSuccess = "Success! You have now been registered."
   const textFail = "Oops, something went wrong! Please try again."
-  console.log(props.isSuccess);
+  console.log(`is  modal success? ${props.isSuccess}`);
   
   return(
     <div className={`popup ${props.isOpen ? 'popup_open' : ""}`}>

@@ -264,8 +264,9 @@ function App() {
       .then((data) => {
         //console.log(data);
         if (!data) {
-          handleFail();
+          //sets modal to true(to open it up)
           handleLoginModal();
+          handleFail();
           console.log(isFail);
           throw new Error("user does not exist");
         }
