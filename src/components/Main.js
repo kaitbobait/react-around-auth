@@ -18,7 +18,7 @@ function Main(props) {
     <>
     <Header>
       <div className="header__nav"> 
-        <Link className="header__link_text" onClick={props.onLogOut} to="/login">Log out</Link>
+        <Link className="header__link_text" onClick={props.onLogOut} to="#">Log out</Link>
         <li className="header__email">{props.userData.email}</li>
       </div>
     </Header>

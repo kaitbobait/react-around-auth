@@ -40,6 +40,7 @@
 .header__email{
   margin: 0 24px 0;
   padding: 0;
+  list-style: none;
 }
 
 @media only screen and (max-width: 879px) {
