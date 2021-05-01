@@ -7,12 +7,6 @@ function EditAvatarPopup(props) {
 
   const currentUser = React.useContext(CurrentUserContext);
 
-  const [imageLink, setImageLink] = React.useState("");
-
-  React.useEffect(() => {
-    setImageLink(currentUser.link);
-  }, [currentUser]);
-
   const avatarRef = React.useRef(); //returns an object
 
   function handleSubmit(evt) {
