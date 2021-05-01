@@ -17,10 +17,10 @@ function Main(props) {
   return (
     <>
     <Header>
-      <nav className="header__nav"> 
+      <div className="header__nav"> 
         <Link className="header__link_text" onClick={props.onLogOut}>Log out</Link>
-        <p className="header__email">{props.userData.email}</p>
-      </nav>
+        <li className="header__email">{props.userData.email}</li>
+      </div>
     </Header>
     <main className="main">
       <section className="profile">
